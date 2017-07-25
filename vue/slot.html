@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <!--单个slot-->
+    <div id="app1">
+        <div>我是父组件的标题</div>
+       <my-component>
+           <p>我是分发内容</p>
+       </my-component>
+    </div>
+<!--具名slot-->
+    <DIV id="app2">
+        <app-layout>
+            <h1 slot="header">这里可能是一个标题</h1>
+            <p>这里是内容</p>
+            <h2 slot="footer">这里是一个信息</h2>
+        </app-layout>
+    </DIV>
+
+
+</body>
+<script>
+    var app1 = new Vue({
+        el:'#app1',
+        components:{
+            'my-component':{
+                template:'\
+                <div>\
+                <h2>我是子组件的标题</h2>\
+                <slot>\
+                只有在没有要分发的内容时才会显示。\
+                 </slot>\
+                 </div>'
+            }
+        }
+    })
+
+
+Vue.component('app-layout',{
+    template:'<div class="container">\
+    <header>\
+    <slot name="header"></slot>\
+        <main>\
+        <slot></slot>\
+        </main>\
+        <footer>\
+        <slot name="footer"></slot>\
+            </footer>\
+            </header>\
+            </div>'
+})
+
+var app2 = new Vue({
+    el:'#app2'
+})
+
+</script>
+</html>

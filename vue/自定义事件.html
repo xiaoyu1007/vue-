@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue自定义事件</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="example">
+        <p>{{total}}</p>
+        <child v-on:increment="sum"></child>
+        <child v-on:increment="sum"></child>
+    </div>
+</body>
+<script>
+    Vue.component("child",{
+        template:'<button @click="increment">{{counter}}</button>',
+        data:function(){
+            return {counter:0}
+        },
+        methods:{
+            increment:function(){
+                this.counter++;
+                this.$emit('increment')
+            }
+        }
+    })
+
+    var example=new Vue({
+        el:'#example',
+        data:{
+            total:0
+        },
+        methods:{
+            sum:function(){
+                this.total++
+            }
+        }
+
+    })
+
+</script>
+</html>

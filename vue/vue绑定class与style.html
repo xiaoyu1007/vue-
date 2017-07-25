@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class</title>
+    <style>
+        .otherClass{
+            background-color: #fff;
+            width: 100px;
+            height: 30px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="test_01">
+        <div class="otherClass" v-bind:class="{'class1':name1,'class2':name2}">
+            我是文字
+        </div>
+    </div>
+    <div class="test_02">
+        <div class="otherClass" :class="classObj">
+            我是文字2
+        </div>
+    </div>
+    <div class="test_03">
+        <div class="otherClass" :class="[class1,class2]">
+            我是文字3
+        </div>
+    </div>
+    <div class="test_04">
+        <div class="otherClass" :style="styleObj">
+            我是蚊子
+        </div>
+    </div>
+</body>
+<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var text1 = new Vue({
+        el:".test_01",
+        data:{
+            name1:1,
+            name2:0
+        }
+    })
+    var text2 = new Vue({
+        el:".test_02",
+        data:{
+           classObj:{
+               class1:1,
+               class2:0
+           }
+        }
+    })
+    var text3 = new Vue({
+        el:".test_03",
+        data:{
+            class1:"class1",
+            class2:"class2"
+        }
+    })
+    var text4 = new Vue({
+        el:".test_04",
+        data:{
+            styleObj:{
+                color:'pink',
+                width:'200px'
+            }
+        }
+    })
+</script>
+</html>

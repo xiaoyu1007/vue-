@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>自定义过滤器</title>
+</head>
+<body>
+<div id="app">
+    {{message|uppercase}}
+</div>
+<div class="box">
+    {{number|sum|add}}
+</div>
+</body>
+<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    Vue.filter('uppercase', function(value) {
+        if (!value) { return ''}
+        value = value.toString()
+        return value.charAt(0).toUpperCase() + value.slice(1)
+    })
+    var vm = new Vue({
+        el:'#app',
+        data: {
+            message: 'test'
+        }
+    })
+
+
+    var box = new Vue({
+        el:".box",
+        data:{
+            number:123
+        },
+        filters:{
+            sum:function(value){
+                return value*10
+            },
+            add:function(value){
+                return value+10
+            }
+        }
+    })
+</script>
+</html>
+<!--
+
+vue2.0中已经废弃了自带过滤器，需要重新定义
+v-bind 缩写
+
+<!-- 完整语法 -->
+<a v-bind:href="url"></a>
+<!-- 缩写 -->
+<a :href="url"></a>
+v-on 缩写
+
+<!-- 完整语法 -->
+<a v-on:click="doSomething"></a>
+<!-- 缩写 -->
+<a @click="doSomething"></a>
+
+-->

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>porps</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="test1">
+    <add v-bind:message="hello"></add>
+</div>
+<div id="test2">
+    <input type="text" v-model="message">
+    <child :mymassage="message"></child>
+</div>
+</body>
+<script>
+    var test2 = new Vue({
+        el:'#test2',
+        data:{
+            message:'hello'
+        },
+        components:{
+            child:{
+                props:['mymassage'],
+                template:'<p>{{mymassage}}</p>'
+            }
+        }
+    })
+
+
+
+    var test = new Vue({
+        el:'#test1',
+        data:{
+            hello:"123"
+        },
+        components:{
+            add:{
+                props:['message'],
+                template:'<span>{{message}}</span>',
+                data:function(){
+                    return {hello:456}
+                }
+
+            }
+        }
+    })
+</script>
+</html>

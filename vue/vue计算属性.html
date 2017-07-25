@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="box1">
+      <p>{{a}}</p>
+        <input type="text" v-model="b">
+    </div>
+</body>
+<script>
+    var box1 = new Vue({
+        el:"#box1",
+        data:{
+            a:1
+        },
+        computed:{
+           b:{
+               get:function(){
+                   return this.a*3
+               },
+               set:function(b){
+                   this.a=b/3
+               }
+           }
+
+        }
+    })
+</script>
+</html>
+<!--
+methods与computed的区别在于计算属性是基于它的依赖缓存。计算属性只有在它的相关依赖发生改变时才会重新取值。
+-->

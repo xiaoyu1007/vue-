@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>porps</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="test1">
+        <add message="hello"></add>
+        <!--结果显示hello-->
+    </div>
+
+</body>
+<script>
+    var test = new Vue({
+        el:'#test1',
+        data:{
+            message:"123"
+        },
+        components:{
+            add:{
+                props:['message'],
+                template:'<span>{{message}}</span>',
+                data:function(){
+                    return {message:456}
+                }
+
+            }
+        }
+    })
+</script>
+</html>

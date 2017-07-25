@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <foo></foo>
+        <hr>
+        <bar></bar>
+    </div>
+</body>
+<script>
+    var eventBus = new Vue({})//第一步创建一个空对象
+
+    var foo={
+        template:'<div><p>the count of foo is {{fooCount}}</p><button @click="addBar">add bar \' count</button></div>',
+        data:function(){
+            return {fooCount:0}
+        },
+        methods:{
+            addBar:function(){
+                eventBus.$emit('addBar')
+            }
+        },
+        mounted:function(){
+            eventBus.$on('addFoo',function(num){
+                this.fooCount+=num
+            }.bind(this))
+        }
+    }
+
+    var bar = {
+        template:'<div><p>the count of bar is {{barCount}}</p><button @click="addFoo">add foo \'s count</button></div>',
+        data:function(){
+            return {barCount:0}
+        },
+        methods:{
+            addFoo:function(){
+             eventBus.$emit('addFoo',2)
+            }
+        },
+        mounted:function(){
+           eventBus.$on('addBar',function(){
+               this.barCount++
+           }.bind(this))
+        }
+    }
+
+    var vm = new Vue({
+        el:'#app',
+        components:{
+            foo,bar
+        }
+    })
+</script>
+</html>

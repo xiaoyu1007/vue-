@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<input type="text" id="submit" @keyup.enter="sub" v-model="value">
+</body>
+<script>
+    var submit = new Vue({
+        el:"#submit",
+        data:{
+            value:1
+        },
+        methods:{
+            sub: function () {
+                alert(this.value)
+            }
+        }
+    })
+</script>
+</html>

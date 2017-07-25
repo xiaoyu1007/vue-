@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.fade-enter-active, .fade-leave-active {
+ 			 opacity: 1;
+ 			 transition: 0.5s;
+			}	
+			.fade-enter, .fade-leave-to /* .fade-leave-active 在 <2.1.8 中 */ {
+			  opacity: 0
+			}
+		</style>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="demon">
+			<button v-on:click="show=!show">toggle</button>
+			<transition name="fade">
+				<p v-if="show">vue</p>
+			</transition>
+		</div>		
+	</body>
+	<script type="text/javascript">
+		var demon = new Vue({
+			el:"#demon",
+			data:{
+				show:true
+			}
+		})
+	</script>
+</html>

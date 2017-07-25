@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">		
+    <title>列表渲染</title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <ul id="demo_1">
+        <li v-for="(value,key) in object">
+            {{key}}:{{value}}
+        </li>
+    </ul>
+</body>
+<script>
+    var demon1 = new Vue({
+        el:"#demo_1",
+        data:{
+            object:{
+                firstname:"xiaoyu",
+                lastname:"li",
+                age:15
+            }
+        }
+    })
+</script>
+</html>
+<!--
+现在，在 2.2.0+ 版本，当对组件使用 v-for 时，必须设置 key 属性。
+-->

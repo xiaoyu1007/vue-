@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+						.a-enter-active {
+				  animation: a .5s;
+				}
+				.a-leave-active {
+				  animation: a .5s reverse;
+				}
+				@keyframes a{
+					from{
+						opacity: 1;
+					}
+					to{
+						opacity: 0;
+					}
+				}
+		</style>
+	</head>
+	<body>
+		<div id="example">
+			<button @click="show=!show">
+				按钮
+			</button>
+		<transition		name="custom-classes-transition" enter-active-class="animated tada"
+			leave-active="animated bounceOutRight"
+			>
+			<p v-if="show">hellow</p>
+		</transition>
+		</div>
+		<div id="app">
+  <button @click="show = !show">Toggle show</button>
+  <transition name="a">
+    <p v-if="show">Look at me!</p>
+  </transition>
+</div>
+		
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:"#app",
+			 data: {
+    show: true
+  }
+		})
+		
+	var example=new Vue({
+			el:"#example",
+			data:{
+				show:true	
+			}
+		})
+	</script>
+</html>

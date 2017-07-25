@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue实例01</title>
+</head>
+<body>
+    <div id="app1">
+        {{message}}
+    </div>
+
+    <div id="app2">
+        <p v-if="seen">
+            you can see me
+        </p>
+    </div>
+    <div id="app3">
+        <ol>
+            <li v-for="word in words">
+                {{word.text}}
+            </li>
+        </ol>
+    </div>
+
+   <div id="app4">
+       <p>
+           {{message}}
+       </p>
+       <button v-on:click="reverse">
+           翻转
+       </button>
+   </div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+    var app4 = new Vue({
+        el:"#app4",
+        data:{
+            message:"liang mei mei"
+        },
+        methods:{
+            reverse:function(){
+                this.message=this.message.split("").reverse().join("")
+            }
+        }
+    })
+
+    var app3 = new Vue({
+        el:"#app3",
+        data:{
+            words:[
+                {text:"你有那么长睫毛"},
+                {text:"不悲不喜"},
+                {text:"静静欢喜"}
+            ]
+        }
+    })
+
+    var app1 = new Vue({
+        el:"#app1",
+        data:{
+            message:"hello vue"
+        }
+    })
+
+    var app2 = new Vue({
+        el : "#app2",
+        data:{
+            seen:1
+        }
+    })
+</script>
+</html>

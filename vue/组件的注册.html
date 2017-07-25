@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件的注册</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<!--1.全局注册-->
+    <div id="box1">
+        <mycomponent></mycomponent>
+    </div>
+<!--2.局部组   件注册-->
+<div id="box2">
+    <my-component></my-component>
+</div>
+<div id="box3">
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+</div>
+</body>
+<script>
+    <!--全局组件-->
+    Vue.component('mycomponent',{
+        template:'<div>我是一个组件</div>'
+    })
+
+    var box1 = new Vue({
+        el:'#box1'
+    })
+//局部组件
+    var child = {
+        template:'<div>\
+                我是局部组件\
+            </div>\
+            '
+    }
+    var box2 = new Vue({
+        components:{
+            'my-component':child
+        }
+    })
+
+   //华丽的分割线
+
+    Vue.component("simple-counter",{
+        template:'<button v-on:click="counter++">{{counter}}</button>',
+        data:function(){
+            return {counter:0}
+        }
+    })
+
+var box3 = new Vue({
+    el:'#box3',
+
+})
+</script>
+</html>
